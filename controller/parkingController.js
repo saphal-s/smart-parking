@@ -96,7 +96,7 @@ module.exports.parkingLogin = async (req, res) => {
       const matched = await bcrypt.compare(password, Parking.password);
       if (matched) {
         const token = createToken(parking);
-        return res.json({ msg: "Successfully login", token });
+        return res.json({ msg: "Successfully login", token, parking });
       } else {
         return res
           .status(401)
